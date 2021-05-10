@@ -1,0 +1,36 @@
+<ng-template [ngIf]="this.characters" [ngIfElse]="spinnerBlock">
+    <p-dataView [value]="this.characters || []" [paginator]="true" [rows]="10" [loading]="this.characters === undefined">
+        <ng-template pTemplate="header" >
+            <h2>{{this.title}}</h2>
+        </ng-template>
+        <ng-template let-data pTemplate="listItem">
+            <div style="display: block; width: 100%; margin-bottom: 10px;">
+                <p-fieldset [toggleable]="true" [collapsed]="true">
+                    <ng-template pTemplate="header">
+                        {{data.name}}
+                        <i *ngIf="data.aliases[0]">{{" -" + data.aliases.join(', ')}}</i>
+                    </ng-template>
+
+                    <div *ngFor="let column of this.charactersKeys" style="display: block;">
+                        <div *ngIf="!['books','povBooks'].includes(column); else elseBlock">
+                            <b *ngIf="data[column].join ? data[column].join(', ') : data[column]">{{column}}: </b> {{data[column]}}
+                        </div>
+                        <ng-template #elseBlock>
+                            <b *ngIf="data[column].join ? data[column].join(', ') : data[column]">{{column}}: </b>
+                            <span *ngFor="let bookUrl of data[column]" >
+                                <a [routerLink]="['/books', bookUrl.split('/').pop()]">{{bookUrl.split('/').pop()}}</a>&nbsp;
+                            </span>
+                        </ng-template>
+
+                    </div>
+
+                </p-fieldset>
+            </div>
+        </ng-template>
+
+    </p-dataView>
+</ng-template>
+
+<ng-template #spinnerBlock>
+    <p-progressSpinner></p-progressSpinner>
+</ng-template>

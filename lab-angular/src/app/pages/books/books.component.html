@@ -1,0 +1,12 @@
+<input [(ngModel)]="filter" placeholder="Search book by name" />
+<div class="p-grid">
+    <div class="p-col-2" *ngFor="let book of filteredBooks">
+        <a [routerLink]="['/books', book.url.split('/').pop()]">
+            <p-card header="{{book.name}}" subheader="{{book.authors}}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" [src]="book.thumbnail_m">
+            </ng-template>
+        </p-card>
+        </a>
+    </div>
+</div>

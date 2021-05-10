@@ -1,0 +1,9 @@
+<h1>{{this.bookDetails?.name}}</h1>
+<h3>by: {{this.bookDetails?.authors}}</h3>
+<div>Number of pages: {{this.bookDetails?.numberOfPages}}</div>
+<ng-template [ngIf]="this.bookDetails?.thumbnail_m">
+    <img src="{{this.bookDetails?.thumbnail_m}}" alt="" />
+</ng-template>
+
+<app-characterList title="Characters list" [characters]="this.bookDetails?.charactersWithDetails"></app-characterList>
+<app-characterList title="POV Characters list." [characters]="this.bookDetails?.povCharactersWithDetails"></app-characterList>
