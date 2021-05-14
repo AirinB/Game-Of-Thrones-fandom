@@ -20,7 +20,7 @@ export class CharactersService {
 
   constructor(private http: HttpClient, private cacheService: CacheService) {}
 
-  async fetchData(page = 1) {
+  async fetchData(page = 1):Promise<Record<string, Character>> {
     if (page > totalPages) {
       return this.characters;
     }
@@ -51,7 +51,6 @@ export class CharactersService {
 
   async getCharacters(page = 1): Promise<Record<string, Character>> {
     const firstIxInChunk = (page - 1) * pageSize + 1;
-    console.log('firstInChunk', firstIxInChunk)
     if (!this.characters[firstIxInChunk]) {
       await this.fetchData(page);
     }
