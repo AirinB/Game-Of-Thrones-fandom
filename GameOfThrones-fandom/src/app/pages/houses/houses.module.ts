@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { HousesRoutingModule } from './houses-routing.module';
 import { HousesComponent } from './houses.component';
+import { HouseComponent } from './house/house.component';
 
 
 @NgModule({
   declarations: [
-    HousesComponent
+    HousesComponent,
+    HouseComponent
   ],
   imports: [
     CommonModule,
