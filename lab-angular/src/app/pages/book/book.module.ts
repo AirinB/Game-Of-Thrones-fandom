@@ -6,17 +6,17 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BookRoutingModule } from './book-routing.module';
 import { BookComponent } from './book.component';
-import { CharacterComponent } from './character/character.component';
+import {CharacterComponent} from './character/character.component';
 
 @NgModule({
-  declarations: [BookComponent, CharacterComponent],
-  imports: [
-    CommonModule,
-    BookRoutingModule,
-    TableModule,
-    DataViewModule,
-    FieldsetModule,
-    ProgressSpinnerModule,
-  ],
+    declarations: [BookComponent, CharacterComponent],
+    imports: [
+        CommonModule,
+        BookRoutingModule,
+        TableModule,
+        DataViewModule,
+        FieldsetModule,
+        ProgressSpinnerModule,
+    ]
 })
 export class BookModule {}

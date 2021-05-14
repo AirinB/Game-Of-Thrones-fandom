@@ -11,9 +11,10 @@ import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import { HousesComponent } from './components/houses/houses.component';
 import { CharactersService } from './services/characters/characters.service';
+import { HouseComponent } from './components/houses/house/house.component';
 
 @NgModule({
-  declarations: [AppComponent, HousesComponent],
+  declarations: [AppComponent, HousesComponent, HouseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

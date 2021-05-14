@@ -51,15 +51,19 @@ export class CharactersService {
 
   async getCharacters(page = 1): Promise<Record<string, Character>> {
     const firstIxInChunk = (page - 1) * pageSize + 1;
+    console.log('firstInChunk', firstIxInChunk)
     if (!this.characters[firstIxInChunk]) {
       await this.fetchData(page);
     }
+    console.log('characters', this.characters);
 
     // See docs: https://ramdajs.com/docs/#range
-    const idsRange = range(firstIxInChunk, pageSize);
+    const idsRange = range(firstIxInChunk, firstIxInChunk + pageSize);
+    console.log({idsRange, pageSize});
 
     // See docs: https://ramdajs.com/docs/#pick
     const pageItems = pick(idsRange, this.characters);
+    console.log(pageItems);
 
     localStorage.characters = JSON.stringify(this.characters);
 
